@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudentOS — The Unified Operating System for Student Life</title>
+
+  <!-- Tailwind CSS & Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            os: {
+              bg: '#040308',
+              surface: '#0E0B1C',
+              elevated: '#17122E',
+              border: 'rgba(139, 92, 246, 0.22)',
+              primary: '#8B5CF6',
+              primaryHover: '#7C3AED',
+              lavender: '#C4B5FD',
+              accent: '#A78BFA',
+              sos: '#EF4444',
+              eco: '#10B981'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #040308;
+      color: #F8FAFC;
+      overflow-x: hidden;
+    }
+    .glass-nav {
+      background: rgba(7, 5, 14, 0.90);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(139, 92, 246, 0.16);
+    }
+    .glass-card {
+      background: rgba(14, 11, 28, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(139, 92, 246, 0.22);
+    }
+    .sticky-viewport {
+      position: sticky;
+      top: 4rem;
+      height: calc(100vh - 4rem);
+      width: 100vw;
+      overflow: hidden;
+    }
+    @media (min-width: 640px) {
+      .sticky-viewport {
+        top: 5rem;
+        height: calc(100vh - 5rem);
+      }
+    }
+    .ambient-radial {
+      background: 
+        radial-gradient(circle at 65% 50%, rgba(139, 92, 246, 0.22) 0%, rgba(4, 3, 8, 0.98) 65%),
+        radial-gradient(circle at 15% 75%, rgba(99, 102, 241, 0.12) 0%, transparent 50%);
+    }
+
+    /* 3D Smartphone Stage & Deconstruction Layers */
+    .scene-3d-wrapper {
+      perspective: 1400px;
+      perspective-origin: 50% 50%;
+    }
+    .phone-assembly {
+      transform-style: preserve-3d;
+      will-change: transform;
+      transition: transform 0.08s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    
+    /* Authentic iPhone Pro Continuous Squircle Radius */
+    .phone-layer {
+      position: absolute;
+      inset: 0;
+      transform-style: preserve-3d;
+      will-change: transform, opacity;
+      border-radius: 24px;
+      transition: transform 0.12s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    @media (min-width: 640px) {
+      .phone-layer {
+        border-radius: 36px;
+      }
+    }
+    @media (min-width: 1024px) {
+      .phone-layer {
+        border-radius: 46px;
+      }
+    }
+
+    /* Glass Sheen Reflection */
+    .screen-sheen {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.16) 0%,
+        rgba(255, 255, 255, 0.04) 30%,
+        transparent 55%
+      );
+    }
+
+    /* Ground Shadow */
+    .phone-ground-shadow {
+      position: absolute;
+      bottom: -45px;
+      left: 10%;
+      width: 80%;
+      height: 35px;
+      background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.45) 0%, rgba(0, 0, 0, 0.8) 45%, transparent 75%);
+      filter: blur(14px);
+      border-radius: 50%;
+      transform: rotateX(85deg);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #040308; }
+    ::-webkit-scrollbar-thumb { background: #17122E; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #8B5CF6; }
+  </style>
+</head>
+
+<body class="font-sans antialiased selection:bg-os-primary selection:text-white">
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="fixed top-0 inset-x-0 z-50 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-2.5 sm:gap-3.5 group">
+        <div class="relative w-9 h-9 sm:w-11 sm:h-11 rounded-2xl overflow-hidden p-1 bg-gradient-to-br from-violet-500/40 via-purple-600/20 to-transparent border border-os-border shadow-[0_0_24px_rgba(139,92,246,0.4)] group-hover:scale-105 transition-all flex-shrink-0">
+          <img src="StudentOS_Logo.png" alt="StudentOS" class="w-full h-full object-contain rounded-xl" onerror="this.src='StudentOS_L';" />
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-1.5 sm:gap-2">
+            <span class="text-base sm:text-xl font-extrabold tracking-tight text-white flex items-center">
+              Student<span class="text-os-primary">OS</span>
+            </span>
+            <span class="text-[9px] sm:text-[10px] font-mono font-bold px-1.5 sm:px-2 py-0.5 rounded-full bg-os-primary/20 border border-os-primary/40 text-os-lavender">v1.0.0</span>
+          </div>
+          <span class="hidden sm:inline text-[10px] font-mono text-slate-400 tracking-wider uppercase -mt-0.5">The Unified Student Life OS</span>
+        </div>
+      </a>
+
+      <!-- Navigation Anchors -->
+      <div class="hidden lg:flex items-center gap-8 text-xs font-semibold uppercase tracking-wider text-slate-300">
+        <a href="#scroll-track" class="hover:text-os-lavender transition-colors flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-os-primary shadow-[0_0_8px_#8B5CF6]"></span>
+          <span>3D Architecture</span>
+        </a>
+        <a href="#portal" class="hover:text-os-lavender transition-colors">Release Integrity</a>
+        <a href="#portal" class="hover:text-os-lavender transition-colors">SHA-256 Verifier</a>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- GitHub Repository Link -->
+        <a href="https://github.com/GLITCHLORDX/StudentOS" target="_blank" rel="noopener noreferrer" 
+           aria-label="View StudentOS source code on GitHub"
+           class="inline-flex items-center gap-2 p-2 sm:px-3.5 sm:py-2.5 rounded-xl border border-os-border bg-os-surface hover:bg-os-elevated text-slate-200 hover:text-white transition-all shadow-sm hover:border-os-primary/50 group">
+          <svg class="w-4 h-4 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          <span class="hidden sm:inline font-mono text-xs font-semibold">GitHub</span>
+        </a>
+
+        <a href="#portal" class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-os-primary to-indigo-600 hover:from-os-primaryHover hover:to-indigo-700 text-white font-bold text-xs whitespace-nowrap transition-all shadow-[0_0_24px_rgba(139,92,246,0.4)] transform active:scale-95">
+          <i data-lucide="download" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+          <span>Get StudentOS</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== SCROLLYTELLING CONTAINER (520vh) ==================== -->
+  <div id="scroll-track" class="relative w-full h-[520vh]">
+    
+    <!-- Pinned 3D Stage Viewport -->
+    <div class="sticky-viewport flex items-center justify-center ambient-radial">
+
+      <!-- Step Indicator Dots -->
+      <div class="fixed left-6 top-1/2 -translate-y-1/2 z-30 hidden md:flex flex-col gap-3">
+        <div id="ind-0" class="step-indicator w-1.5 h-6 rounded-full bg-os-primary shadow-[0_0_10px_#8B5CF6] transition-all duration-300"></div>
+        <div id="ind-1" class="step-indicator w-1.5 h-2 rounded-full bg-slate-700 transition-all duration-300"></div>
+        <div id="ind-2" class="step-indicator w-1.5 h-2 rounded-full bg-slate-700 transition-all duration-300"></div>
+        <div id="ind-3" class="step-indicator w-1.5 h-2 rounded-full bg-slate-700 transition-all duration-300"></div>
+      </div>
+
+      <!-- ================= 3D IPHONE PRO COMPOSITOR STAGE ================= -->
+      <div class="absolute inset-0 flex items-start pt-3 sm:pt-6 md:items-center md:pt-0 justify-center pointer-events-none z-10 scene-3d-wrapper">
+        <div id="phone-assembly" class="phone-assembly relative h-[49vh] sm:h-[56vh] md:h-[68vh] max-h-[600px] aspect-[9/19.5]">
+          
+          <!-- Layer 0: Titanium Matte Glass Back Chassis + Pro Camera Island -->
+          <div id="layer-back" class="phone-layer bg-gradient-to-b from-[#140F2B] via-[#0D0920] to-[#060412] border border-violet-400/30 shadow-2xl overflow-hidden">
+            <!-- iPhone Pro Triple Camera Island -->
+            <div class="absolute top-3 left-3 sm:top-4 sm:left-4 w-14 h-14 sm:w-20 sm:h-20 rounded-2xl bg-[#1B143A]/90 border border-violet-400/25 p-1.5 sm:p-2 shadow-inner">
+              <div class="relative w-full h-full">
+                <!-- Top-Left Lens -->
+                <div class="absolute top-0 left-0 w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-black/95 border border-violet-400/40 flex items-center justify-center shadow-md">
+                  <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-violet-600/70 border border-violet-300/30"></div>
+                </div>
+                <!-- Bottom-Left Lens -->
+                <div class="absolute bottom-0 left-0 w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-black/95 border border-violet-400/40 flex items-center justify-center shadow-md">
+                  <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-indigo-600/70 border border-indigo-300/30"></div>
+                </div>
+                <!-- Middle-Right Lens -->
+                <div class="absolute top-1/2 -translate-y-1/2 right-0 w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-black/95 border border-violet-400/40 flex items-center justify-center shadow-md">
+                  <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-purple-600/70 border border-purple-300/30"></div>
+                </div>
+                <!-- Flash & LiDAR -->
+                <div class="absolute top-1 right-2 w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-amber-100/90 shadow-[0_0_6px_rgba(251,191,36,0.8)]"></div>
+                <div class="absolute bottom-1.5 right-2 w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-black border border-violet-900/60"></div>
+              </div>
+            </div>
+            <!-- StudentOS Logo Ambient Imprint -->
+            <div class="absolute inset-0 flex items-center justify-center opacity-15">
+              <img src="StudentOS_Logo.png" alt="StudentOS" class="w-18 h-18 sm:w-24 sm:h-24 object-contain" onerror="this.src='StudentOS_L';" />
+            </div>
+          </div>
+
+          <!-- Layer 1: Titanium Mid-Frame & Logic Core (Room v10 & AI Engine) -->
+          <div id="layer-core" class="phone-layer bg-gradient-to-b from-[#1C1542] to-[#100B29] border border-purple-400/40 p-2 sm:p-3.5 flex flex-col justify-between shadow-2xl overflow-hidden">
+            <!-- Top Chipset (Gemini AI Chain) -->
+            <div class="w-full p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl bg-black/80 border border-violet-500/30 font-mono text-[8px] sm:text-[9px] text-violet-300">
+              <div class="text-[7px] sm:text-[8px] text-os-muted uppercase">Primary Logic Subsystem</div>
+              <div class="font-bold text-white text-[9px] sm:text-[11px] mt-0.5 truncate">gemini-3.6-flash</div>
+              <div class="text-[7px] sm:text-[8px] text-emerald-400 mt-0.5 truncate">Bounded Fallback Chain · OpenRouter</div>
+            </div>
+            <!-- Center Room v10 Storage -->
+            <div class="w-full p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl bg-black/80 border border-violet-500/30 font-mono text-[8px] sm:text-[9px] text-slate-300">
+              <div class="text-[7px] sm:text-[8px] text-os-muted uppercase">Local Persistence Engine</div>
+              <div class="font-bold text-white text-[9px] sm:text-[11px] mt-0.5 truncate">Room DB v10 (SQLite)</div>
+              <div class="text-[7px] sm:text-[8px] text-amber-400 mt-0.5 truncate">Max-Merge Streak Synchronization</div>
+            </div>
+            <!-- Bottom SOS Battery & Foreground Service Core -->
+            <div class="w-full p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl bg-red-950/60 border border-red-500/40 font-mono text-[8px] sm:text-[9px] text-red-300">
+              <div class="font-bold text-white text-[9px] sm:text-[11px] truncate">SOS Foreground Service Core</div>
+              <div class="text-[7px] sm:text-[8px] text-red-200 mt-0.5 truncate">SEND_SMS · CALL_PHONE Hardened</div>
+            </div>
+          </div>
+
+          <!-- Layer 2: Super Retina XDR OLED Display (Micro-Bezel) -->
+          <div id="layer-screen" class="phone-layer bg-black border-[2px] sm:border-[2.5px] border-violet-300/30 overflow-hidden shadow-[0_0_55px_rgba(139,92,246,0.35)]">
+            <!-- Screen 0: Home -->
+            <img id="screen-0" src="01_Home.png" alt="Home Dashboard" 
+                 class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100 z-10" />
+
+            <!-- Screen 1: Study Domain -->
+            <img id="screen-1" src="02_Study.png" alt="Study Domain Courses" 
+                 class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0 z-20" />
+
+            <!-- Screen 2: Focus Domain -->
+            <img id="screen-2" src="06_Focus.png" alt="Focus Mode Timer" 
+                 class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0 z-30" />
+
+            <!-- Screen 3: AI Engine Pipeline -->
+            <img id="screen-3" src="08_AI.png" alt="StudentOS AI Engine" 
+                 class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0 z-40" />
+
+            <!-- Precision iPhone Dynamic Island Pill -->
+            <div class="absolute top-2 sm:top-2.5 left-1/2 -translate-x-1/2 w-14 sm:w-20 h-3.5 sm:h-4.5 rounded-full bg-black border border-white/10 flex items-center justify-between px-2 shadow-lg z-50 pointer-events-none">
+              <div class="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#0a0717] border border-violet-900/40"></div>
+              <div class="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-[#06040f]"></div>
+            </div>
+
+            <!-- Sleek iPhone Home Bar -->
+            <div class="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-16 sm:w-24 h-1 rounded-full bg-white/40 pointer-events-none z-50"></div>
+
+            <!-- Soft Corner Vignette -->
+            <div class="absolute inset-0 pointer-events-none shadow-[inset_0_0_16px_rgba(0,0,0,0.65)] z-40"></div>
+          </div>
+
+          <!-- Layer 3: Ceramic Shield Specular Front Glass -->
+          <div id="layer-glass" class="phone-layer border border-white/20 screen-sheen pointer-events-none shadow-2xl">
+            <!-- Micro Top Ear Speaker Slit -->
+            <div class="absolute top-1 left-1/2 -translate-x-1/2 w-10 sm:w-14 h-0.5 rounded-full bg-black/90 border border-white/10"></div>
+          </div>
+
+          <!-- Authentic Flush iPhone Titanium Controls: Power / Side Button (Right) -->
+          <div class="absolute -right-[2px] top-24 sm:top-36 w-[2px] sm:w-[3px] h-10 sm:h-14 bg-gradient-to-b from-slate-300 via-slate-400 to-slate-500 rounded-r-sm shadow-[0_0_4px_rgba(255,255,255,0.25)]"></div>
+          
+          <!-- Authentic Flush iPhone Titanium Controls: Action Button & Volume Rockers (Left) -->
+          <div class="absolute -left-[2px] top-18 sm:top-24 w-[2px] sm:w-[3px] h-4 sm:h-5 bg-gradient-to-b from-slate-300 via-slate-400 to-slate-500 rounded-l-sm shadow-[0_0_4px_rgba(255,255,255,0.2)]"></div>
+          <div class="absolute -left-[2px] top-26 sm:top-34 w-[2px] sm:w-[3px] h-7 sm:h-10 bg-gradient-to-b from-slate-300 via-slate-400 to-slate-500 rounded-l-sm shadow-[0_0_4px_rgba(255,255,255,0.2)]"></div>
+          <div class="absolute -left-[2px] top-35 sm:top-46 w-[2px] sm:w-[3px] h-7 sm:h-10 bg-gradient-to-b from-slate-300 via-slate-400 to-slate-500 rounded-l-sm shadow-[0_0_4px_rgba(255,255,255,0.2)]"></div>
+
+          <!-- Soft Ground Reflection Shadow -->
+          <div class="phone-ground-shadow"></div>
+        </div>
+      </div>
+
+      <!-- ================= SCENIC EDITORIAL OVERLAYS ================= -->
+      
+      <!-- Sequence 0 -->
+      <div id="seq-0" class="absolute z-20 w-[92%] sm:w-[85%] max-w-xl inset-x-0 mx-auto md:inset-x-auto md:mx-0 md:left-24 bottom-2 sm:bottom-4 md:bottom-auto pointer-events-auto transition-all duration-700 opacity-100 transform translate-y-0 text-center md:text-left">
+        <div class="glass-card p-3.5 sm:p-5 md:p-0 md:bg-transparent md:border-0 md:backdrop-blur-none rounded-2xl md:rounded-none shadow-2xl md:shadow-none">
+          <div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full border border-os-border bg-os-surface/90 text-[10px] sm:text-[11px] font-mono text-os-lavender mb-1.5 sm:mb-4 shadow-sm">
+            <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Verified Production V1.0.0 · Android API 26+</span>
+          </div>
+          <h1 class="text-xl sm:text-3xl md:text-6xl font-extrabold text-white tracking-tight leading-tight md:leading-[1.12]">
+            Built on Real <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-os-lavender to-violet-300">Architecture</span>.
+          </h1>
+          <p class="text-slate-300 text-[11px] sm:text-sm md:text-base mt-1 md:mt-4 leading-relaxed max-w-lg mx-auto md:mx-0">
+            Not a mockup or prototype. A unified Android operating system crafted with Jetpack Compose, local-first Room DB, and bounded multi-stage AI.
+          </p>
+          <div class="mt-2 sm:mt-5 flex items-center justify-center md:justify-start gap-2 text-[10px] sm:text-xs font-mono text-os-lavender">
+            <i data-lucide="arrow-down" class="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-bounce text-os-primary"></i>
+            <span>Scroll down to deconstruct layers</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sequence 1 -->
+      <div id="seq-1" class="absolute z-20 w-[92%] sm:w-[85%] max-w-md inset-x-0 mx-auto md:inset-x-auto md:mx-0 md:left-auto md:right-24 bottom-2 sm:bottom-4 md:bottom-auto pointer-events-auto transition-all duration-700 opacity-0 transform translate-y-6">
+        <div class="glass-card p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl border border-os-border shadow-2xl">
+          <div class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-os-accent mb-1 sm:mb-2">Internal Subsystems</div>
+          <h2 class="text-lg sm:text-2xl md:text-3xl font-bold text-white tracking-tight">Built on Local-First Canvas</h2>
+          <p class="text-slate-300 text-xs sm:text-sm mt-1 sm:mt-3 leading-relaxed">
+            Deconstructed layers reveal the Room DB v10 persistence engine with max-merge streak protection, course syllabus management, and bounded fallback chains.
+          </p>
+          <div class="mt-2 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2 font-mono text-[9px] sm:text-[10px] text-os-lavender">
+            <span class="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-black/50 rounded-lg border border-os-border">Algorithms CS201</span>
+            <span class="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-black/50 rounded-lg border border-os-border">OS CS301</span>
+            <span class="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-black/50 rounded-lg border border-os-border">Room v10</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sequence 2 -->
+      <div id="seq-2" class="absolute z-20 w-[92%] sm:w-[85%] max-w-md inset-x-0 mx-auto md:inset-x-auto md:mx-0 md:left-24 bottom-2 sm:bottom-4 md:bottom-auto pointer-events-auto transition-all duration-700 opacity-0 transform translate-y-6">
+        <div class="glass-card p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl border border-purple-500/30 shadow-2xl">
+          <div class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-os-accent mb-1 sm:mb-2">The Complete Experience</div>
+          <h2 class="text-lg sm:text-2xl md:text-3xl font-bold text-white tracking-tight">Made for Student Life</h2>
+          <p class="text-slate-300 text-xs sm:text-sm mt-1 sm:mt-3 leading-relaxed">
+            Every layer converges into a single, cohesive consumer product. Flow-state timers integrated directly into academic objectives and streaks, rather than an isolated stopwatch.
+          </p>
+          <div class="mt-2 sm:mt-4 font-mono text-[10px] sm:text-[11px] text-emerald-400 flex items-center gap-1.5">
+            <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
+            <span>Tested & Physically Verified on SM-M225FV</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sequence 3 -->
+      <div id="seq-3" class="absolute z-20 w-[92%] sm:w-[85%] max-w-md inset-x-0 mx-auto md:inset-x-auto md:mx-0 md:left-auto md:right-24 bottom-2 sm:bottom-4 md:bottom-auto pointer-events-auto transition-all duration-700 opacity-0 transform translate-y-6">
+        <div class="glass-card p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl border border-red-500/30 shadow-2xl">
+          <div class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-red-400 mb-1 sm:mb-2">Precision & Security</div>
+          <h2 class="text-lg sm:text-2xl md:text-3xl font-bold text-white tracking-tight">The Mission-Critical Core</h2>
+          <p class="text-slate-300 text-xs sm:text-sm mt-1 sm:mt-3 leading-relaxed">
+            Macro-level hardware and background coordination. Dedicated SEND_SMS and CALL_PHONE foreground handlers paired with gemini-3.6-flash chapter synthesis without artificial progress bars.
+          </p>
+          <div class="mt-2 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2 font-mono text-[9px] sm:text-[10px] text-red-300">
+            <span class="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-red-950/40 rounded-lg border border-red-500/30">SEND_SMS</span>
+            <span class="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-red-950/40 rounded-lg border border-red-500/30">CALL_PHONE</span>
+            <span class="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-red-950/40 rounded-lg border border-red-500/30">SOS Verified</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== DOWNLOAD & VERIFICATION PORTAL ==================== -->
+  <section id="portal" class="relative z-30 py-28 bg-[#040308] border-t border-os-border/50">
+    <div class="max-w-6xl mx-auto px-6">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-os-border bg-os-surface text-[11px] font-mono text-os-lavender mb-3">
+          <i data-lucide="package-check" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <span>Frozen Production Binaries</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          Download & Verify StudentOS
+        </h2>
+        <p class="text-slate-400 mt-4 text-sm sm:text-base">
+          Get the authentic V1.0.0 release APK directly or via GitHub. Verify cryptographic SHA-256 integrity directly in your browser.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left: Download Options -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="glass-card p-6 rounded-3xl border border-os-border space-y-5">
+            <h3 class="text-lg font-bold text-white">Release Package Information</h3>
+            
+            <div class="space-y-2.5 font-mono text-xs">
+              <div class="flex justify-between pb-2 border-b border-os-border/40 text-slate-400">
+                <span>Version</span>
+                <span class="text-white">V1.0.0 (Version Code 1)</span>
+              </div>
+              <div class="flex justify-between pb-2 border-b border-os-border/40 text-slate-400">
+                <span>Package ID</span>
+                <span class="text-os-lavender">com.studentos.app</span>
+              </div>
+              <div class="flex justify-between pb-2 border-b border-os-border/40 text-slate-400">
+                <span>Min Android SDK</span>
+                <span class="text-white">API 26+ (Android 8.0+)</span>
+              </div>
+              <div class="flex justify-between pb-2 border-b border-os-border/40 text-slate-400">
+                <span>Automated Tests</span>
+                <span class="text-emerald-400 font-bold">297 Passed</span>
+              </div>
+            </div>
+
+            <!-- Download Action Buttons -->
+            <div class="space-y-3 pt-2">
+              <a href="https://github.com/GLITCHLORDX/StudentOS/releases/download/Apk/StudentOS-v1.0.0-release.apk"
+                 class="w-full flex items-center justify-center gap-3 py-3.5 rounded-xl bg-os-primary hover:bg-purple-600 text-white font-bold text-sm shadow-[0_0_25px_rgba(139,92,246,0.4)] transition-all">
+                <i data-lucide="download" class="w-4 h-4"></i>
+                <span>Direct APK Download</span>
+              </a>
+
+              <!-- Redirects to tagged release -->
+              <a href="https://github.com/GLITCHLORDX/StudentOS/releases/tag/Apk" target="_blank" rel="noopener noreferrer"
+                 class="w-full flex items-center justify-center gap-3 py-3 rounded-xl border border-os-border bg-os-surface hover:bg-os-elevated text-slate-200 text-xs font-semibold transition-all">
+                <svg class="w-4 h-4 fill-current text-slate-300" viewBox="0 0 24 24">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                </svg>
+                <span>Download via GitHub Releases</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Play Protect Notification Box -->
+          <div class="glass-card p-4 rounded-2xl border-l-4 border-l-amber-500 text-xs space-y-1">
+            <div class="font-bold text-amber-300 flex items-center gap-1.5">
+              <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i>
+              <span>Play Protect / Sideloading Notice</span>
+            </div>
+            <p class="text-slate-400 leading-relaxed">
+              Play Protect may present an enhanced warning when sideloading because StudentOS contains emergency <code>SEND_SMS</code> & <code>CALL_PHONE</code> permissions for SOS features. The build is authentic, safe, and unmodified.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Client-Side SHA-256 APK Cryptographic Verifier -->
+        <div class="lg:col-span-7">
+          <div class="glass-card p-8 rounded-3xl border border-purple-500/30 relative">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h3 class="text-xl font-bold text-white">Client-Side APK Verifier</h3>
+                <p class="text-xs text-slate-400 mt-0.5">Verify that your downloaded APK is the genuine release build.</p>
+              </div>
+              <div class="p-2 rounded-xl bg-os-primary/10 border border-os-primary/30 text-os-lavender">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+              </div>
+            </div>
+
+            <!-- Expected Release Hash Block -->
+            <div class="bg-black/60 p-3 rounded-xl border border-os-border/50 text-[11px] font-mono text-slate-300 mb-5">
+              <span class="text-os-muted block mb-1 text-[10px]">OFFICIAL QA FROZEN SHA-256:</span>
+              <span class="text-os-lavender break-all select-all font-semibold">
+                77C8C197AB390F106545A7E2CED08AFA637804144958197B55716F39A341EA8C
+              </span>
+            </div>
+
+            <!-- Interactive Dropzone -->
+            <div id="drop-zone" class="border-2 border-dashed border-os-border hover:border-os-primary/60 rounded-2xl p-8 text-center cursor-pointer transition-colors bg-black/20">
+              <input type="file" id="apk-file-input" accept=".apk" class="hidden" />
+              <div class="flex flex-col items-center justify-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-os-surface flex items-center justify-center text-os-primary border border-os-border">
+                  <i data-lucide="upload-cloud" class="w-6 h-6"></i>
+                </div>
+                <div class="text-sm font-semibold text-white">Select or Drag & Drop APK File</div>
+                <div class="text-xs text-os-muted">Files never leave your browser. Cryptographic SHA-256 computed offline via WebCrypto.</div>
+              </div>
+            </div>
+
+            <!-- Real-Time Verification Result -->
+            <div id="verification-result" class="hidden mt-6 pt-5 border-t border-os-border/40 font-mono text-xs space-y-2">
+              <div class="flex justify-between items-center text-slate-400">
+                <span>File Name:</span>
+                <span id="res-filename" class="text-white"></span>
+              </div>
+              <div class="text-slate-400">
+                <span>Computed Hash:</span>
+                <div id="res-computed-hash" class="bg-black/40 p-2.5 rounded text-[11px] text-slate-300 break-all mt-1 border border-os-border/40"></div>
+              </div>
+              <!-- Status Badge -->
+              <div id="res-status-badge" class="mt-3 py-2.5 px-3 rounded-xl font-bold flex items-center gap-2"></div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="py-10 border-t border-os-border/30 bg-[#040308] text-xs text-os-muted">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <img src="StudentOS_Logo.png" alt="Logo" class="w-5 h-5 object-contain" onerror="this.src='StudentOS_L';" />
+        <span class="text-white font-medium">StudentOS V1.0.0</span>
+        <span class="text-slate-600">|</span>
+        <span>Originated as a Little Kites Individual Submission</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/GLITCHLORDX/StudentOS/blob/main/PRIVACY_POLICY.md" target="_blank" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="https://github.com/GLITCHLORDX/StudentOS" target="_blank" class="hover:text-white transition-colors">GitHub Repository</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== SCRIPT ENGINE ==================== -->
+  <script>
+    lucide.createIcons();
+
+    // 1. In-Browser Cryptographic APK Verification
+    const OFFICIAL_SHA256 = "77c8c197ab390f106545a7e2ced08afa637804144958197b55716f39a341ea8c";
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('apk-file-input');
+    const resBox = document.getElementById('verification-result');
+    const resFileName = document.getElementById('res-filename');
+    const resComputedHash = document.getElementById('res-computed-hash');
+    const resStatusBadge = document.getElementById('res-status-badge');
+
+    dropZone.addEventListener('click', () => fileInput.click());
+    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('border-os-primary'); });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('border-os-primary'));
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropZone.classList.remove('border-os-primary');
+      if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+    });
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files.length) handleFile(fileInput.files[0]);
+    });
+
+    async function handleFile(file) {
+      resBox.classList.remove('hidden');
+      resFileName.textContent = file.name;
+      resComputedHash.textContent = "Computing SHA-256 digest locally...";
+      resStatusBadge.className = "mt-3 py-2.5 px-3 rounded-xl bg-purple-900/30 text-purple-300 font-bold flex items-center gap-2 border border-purple-500/30";
+      resStatusBadge.innerHTML = '<i data-lucide="loader" class="w-4 h-4 animate-spin"></i><span>Reading APK bytes...</span>';
+      lucide.createIcons();
+
+      try {
+        const arrayBuffer = await file.arrayBuffer();
+        const hashBuffer = await crypto.subtle.digest('SHA-256', arrayBuffer);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('').toLowerCase();
+
+        resComputedHash.textContent = hashHex.toUpperCase();
+
+        if (hashHex === OFFICIAL_SHA256) {
+          resStatusBadge.className = "mt-3 py-2.5 px-3 rounded-xl bg-emerald-950/60 text-emerald-300 font-bold flex items-center gap-2 border border-emerald-500/50";
+          resStatusBadge.innerHTML = '<i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i><span>VERIFIED AUTHENTIC RELEASE (100% Match with Official Build)</span>';
+        } else {
+          resStatusBadge.className = "mt-3 py-2.5 px-3 rounded-xl bg-red-950/60 text-red-300 font-bold flex items-center gap-2 border border-red-500/50";
+          resStatusBadge.innerHTML = '<i data-lucide="alert-octagon" class="w-4 h-4 text-red-400"></i><span>HASH MISMATCH — Modified or unofficial package</span>';
+        }
+      } catch (err) {
+        resComputedHash.textContent = "Error: " + err.message;
+        resStatusBadge.className = "mt-3 py-2.5 px-3 rounded-xl bg-red-950/60 text-red-300 font-bold flex items-center gap-2";
+        resStatusBadge.innerHTML = '<span>Failed to compute digest</span>';
+      }
+      lucide.createIcons();
+    }
+
+    // 2. Hardware-Accelerated 3D Scrollytelling Choreography
+    (function init3DScrollytelling() {
+      const assembly = document.getElementById('phone-assembly');
+      const layerBack = document.getElementById('layer-back');
+      const layerCore = document.getElementById('layer-core');
+      const layerScreen = document.getElementById('layer-screen');
+      const layerGlass = document.getElementById('layer-glass');
+
+      const screen0 = document.getElementById('screen-0');
+      const screen1 = document.getElementById('screen-1');
+      const screen2 = document.getElementById('screen-2');
+      const screen3 = document.getElementById('screen-3');
+
+      const seq0 = document.getElementById('seq-0');
+      const seq1 = document.getElementById('seq-1');
+      const seq2 = document.getElementById('seq-2');
+      const seq3 = document.getElementById('seq-3');
+
+      const ind0 = document.getElementById('ind-0');
+      const ind1 = document.getElementById('ind-1');
+      const ind2 = document.getElementById('ind-2');
+      const ind3 = document.getElementById('ind-3');
+
+      const track = document.getElementById('scroll-track');
+
+      function updateActiveStep(idx) {
+        [ind0, ind1, ind2, ind3].forEach((ind, i) => {
+          if (i === idx) {
+            ind.className = "step-indicator w-1.5 h-6 rounded-full bg-os-primary shadow-[0_0_10px_#8B5CF6] transition-all duration-300";
+          } else {
+            ind.className = "step-indicator w-1.5 h-2 rounded-full bg-slate-700 transition-all duration-300";
+          }
+        });
+      }
+
+      function lerp(start, end, t) {
+        return start * (1 - t) + end * t;
+      }
+
+      function onScroll() {
+        const rect = track.getBoundingClientRect();
+        const totalScrollable = rect.height - window.innerHeight;
+        const currentScrolled = -rect.top;
+        const progress = Math.max(0, Math.min(1, currentScrolled / totalScrollable));
+
+        const isMobile = window.innerWidth < 768;
+
+        let rotX = 0, rotY = 0, rotZ = 0;
+        let posX = 0, posY = 0, scale = 1;
+        let explodeZ = 0;
+
+        if (progress < 0.25) {
+          const p = progress / 0.25;
+          rotX = lerp(6, 2, p);
+          rotY = isMobile ? lerp(-6, 6, p) : lerp(-16, 12, p);
+          rotZ = 0;
+          posX = isMobile ? 0 : lerp(120, -140, p);
+          posY = 0;
+          scale = isMobile ? lerp(0.98, 1.02, p) : lerp(1.0, 1.03, p);
+          explodeZ = lerp(0, isMobile ? 0.35 : 1.45, p);
+
+          screen0.style.opacity = "1";
+          screen1.style.opacity = "0";
+          screen2.style.opacity = "0";
+          screen3.style.opacity = "0";
+
+          seq0.style.opacity = "1"; seq0.style.transform = "translateY(0px)";
+          seq1.style.opacity = "0"; seq1.style.transform = "translateY(24px)";
+          seq2.style.opacity = "0";
+          seq3.style.opacity = "0";
+          updateActiveStep(0);
+
+        } else if (progress >= 0.25 && progress < 0.55) {
+          const p = (progress - 0.25) / 0.30;
+          rotX = lerp(2, -2, p);
+          rotY = isMobile ? lerp(6, -6, p) : lerp(12, -14, p);
+          rotZ = 0;
+          posX = isMobile ? 0 : lerp(-140, 130, p);
+          posY = 0;
+          scale = isMobile ? 1.02 : lerp(1.03, 1.05, p);
+          explodeZ = lerp(isMobile ? 0.35 : 1.45, 0, p);
+
+          screen0.style.opacity = "0";
+          screen1.style.opacity = "1";
+          screen2.style.opacity = "0";
+          screen3.style.opacity = "0";
+
+          seq0.style.opacity = "0"; seq0.style.transform = "translateY(24px)";
+          seq1.style.opacity = "1"; seq1.style.transform = "translateY(0px)";
+          seq2.style.opacity = "0";
+          seq3.style.opacity = "0";
+          updateActiveStep(1);
+
+        } else if (progress >= 0.55 && progress < 0.80) {
+          const p = (progress - 0.55) / 0.25;
+          rotX = lerp(-2, 8, p);
+          rotY = isMobile ? lerp(-6, 8, p) : lerp(-14, 20, p);
+          rotZ = 0;
+          posX = isMobile ? 0 : lerp(130, -110, p);
+          posY = 0;
+          scale = isMobile ? 1.03 : lerp(1.05, 1.10, p);
+          explodeZ = 0;
+
+          screen0.style.opacity = "0";
+          screen1.style.opacity = "0";
+          screen2.style.opacity = "1";
+          screen3.style.opacity = "0";
+
+          seq0.style.opacity = "0";
+          seq1.style.opacity = "0";
+          seq2.style.opacity = "0"; seq2.style.transform = "translateY(24px)";
+          seq3.style.opacity = "0"; seq3.style.transform = "translateY(24px)";
+          updateActiveStep(2);
+
+        } else {
+          const p = Math.min(1, (progress - 0.80) / 0.20);
+          rotX = lerp(8, 18, p);
+          rotY = isMobile ? lerp(8, 16, p) : lerp(20, 50, p);
+          rotZ = isMobile ? 0 : lerp(0, -6, p);
+          posX = isMobile ? 0 : lerp(-110, -75, p);
+          posY = isMobile ? 0 : lerp(0, -30, p);
+          scale = isMobile ? lerp(1.03, 1.09, p) : lerp(1.10, 1.55, p);
+          explodeZ = 0;
+
+          screen0.style.opacity = "0";
+          screen1.style.opacity = "0";
+          screen2.style.opacity = "0";
+          screen3.style.opacity = "1";
+
+          seq0.style.opacity = "0";
+          seq1.style.opacity = "0";
+          seq2.style.opacity = "0";
+          seq3.style.opacity = "1"; seq3.style.transform = "translateY(0px)";
+          updateActiveStep(3);
+        }
+
+        assembly.style.transform = `translate3d(${posX}px, ${posY}px, 0px) rotateX(${rotX}deg) rotateY(${rotY}deg) rotateZ(${rotZ}deg) scale(${scale})`;
+
+        layerBack.style.transform = `translate3d(0, 0, ${-80 * explodeZ}px)`;
+        layerCore.style.transform = `translate3d(${28 * explodeZ}px, 0, ${-25 * explodeZ}px)`;
+        layerScreen.style.transform = `translate3d(0, 0, ${32 * explodeZ}px)`;
+        layerGlass.style.transform = `translate3d(${-28 * explodeZ}px, 0, ${90 * explodeZ}px)`;
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      onScroll();
+    })();
+  </script>
+</body>
+</html>
