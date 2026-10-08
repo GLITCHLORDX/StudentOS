@@ -60,10 +60,10 @@
       border-bottom: 1px solid rgba(139, 92, 246, 0.16);
     }
     .glass-card {
-      background: rgba(14, 11, 28, 0.85);
+      background: rgba(14, 11, 28, 0.88);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(139, 92, 246, 0.22);
+      border: 1px solid rgba(139, 92, 246, 0.24);
     }
     .sticky-viewport {
       position: sticky;
@@ -80,19 +80,18 @@
     }
     .ambient-radial {
       background: 
-        radial-gradient(circle at 65% 50%, rgba(139, 92, 246, 0.22) 0%, rgba(4, 3, 8, 0.98) 65%),
-        radial-gradient(circle at 15% 75%, rgba(99, 102, 241, 0.12) 0%, transparent 50%);
+        radial-gradient(circle at 65% 50%, rgba(139, 92, 246, 0.24) 0%, rgba(4, 3, 8, 0.98) 65%),
+        radial-gradient(circle at 15% 75%, rgba(99, 102, 241, 0.14) 0%, transparent 50%);
     }
 
-    /* 3D Smartphone Stage & Deconstruction Layers */
+    /* 3D Smartphone Stage */
     .scene-3d-wrapper {
-      perspective: 1400px;
+      perspective: 1500px;
       perspective-origin: 50% 50%;
     }
     .phone-assembly {
       transform-style: preserve-3d;
       will-change: transform;
-      transition: transform 0.08s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
     
     /* Authentic iPhone Pro Continuous Squircle Radius */
@@ -101,8 +100,7 @@
       inset: 0;
       transform-style: preserve-3d;
       will-change: transform, opacity;
-      border-radius: 24px;
-      transition: transform 0.12s cubic-bezier(0.2, 0.8, 0.2, 1);
+      border-radius: 26px;
     }
     @media (min-width: 640px) {
       .phone-layer {
@@ -111,7 +109,7 @@
     }
     @media (min-width: 1024px) {
       .phone-layer {
-        border-radius: 46px;
+        border-radius: 42px;
       }
     }
 
@@ -119,7 +117,7 @@
     .screen-sheen {
       background: linear-gradient(
         135deg,
-        rgba(255, 255, 255, 0.16) 0%,
+        rgba(255, 255, 255, 0.18) 0%,
         rgba(255, 255, 255, 0.04) 30%,
         transparent 55%
       );
@@ -132,7 +130,7 @@
       left: 10%;
       width: 80%;
       height: 35px;
-      background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.45) 0%, rgba(0, 0, 0, 0.8) 45%, transparent 75%);
+      background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.45) 0%, rgba(0, 0, 0, 0.85) 45%, transparent 75%);
       filter: blur(14px);
       border-radius: 50%;
       transform: rotateX(85deg);
@@ -180,7 +178,7 @@
 
       <!-- Action Buttons -->
       <div class="flex items-center gap-2 sm:gap-3">
-        <!-- GitHub Repository Link -->
+        <!-- Prominent GitHub Repository Link -->
         <a href="https://github.com/GLITCHLORDX/StudentOS" target="_blank" rel="noopener noreferrer" 
            aria-label="View StudentOS source code on GitHub"
            class="inline-flex items-center gap-2 p-2 sm:px-3.5 sm:py-2.5 rounded-xl border border-os-border bg-os-surface hover:bg-os-elevated text-slate-200 hover:text-white transition-all shadow-sm hover:border-os-primary/50 group">
@@ -214,31 +212,27 @@
 
       <!-- ================= 3D IPHONE PRO COMPOSITOR STAGE ================= -->
       <div class="absolute inset-0 flex items-start pt-3 sm:pt-6 md:items-center md:pt-0 justify-center pointer-events-none z-10 scene-3d-wrapper">
-        <div id="phone-assembly" class="phone-assembly relative h-[49vh] sm:h-[56vh] md:h-[68vh] max-h-[600px] aspect-[9/19.5]">
+        <div id="phone-assembly" class="phone-assembly relative h-[44vh] sm:h-[54vh] md:h-[66vh] max-h-[590px] aspect-[9/19.5]">
           
           <!-- Layer 0: Titanium Matte Glass Back Chassis + Pro Camera Island -->
-          <div id="layer-back" class="phone-layer bg-gradient-to-b from-[#140F2B] via-[#0D0920] to-[#060412] border border-violet-400/30 shadow-2xl overflow-hidden">
-            <!-- iPhone Pro Triple Camera Island -->
-            <div class="absolute top-3 left-3 sm:top-4 sm:left-4 w-14 h-14 sm:w-20 sm:h-20 rounded-2xl bg-[#1B143A]/90 border border-violet-400/25 p-1.5 sm:p-2 shadow-inner">
+          <div id="layer-back" class="phone-layer bg-gradient-to-b from-[#15102D] via-[#0E0A22] to-[#070514] border border-violet-400/35 shadow-2xl overflow-hidden">
+            <!-- Camera Island -->
+            <div class="absolute top-2.5 left-2.5 sm:top-4 sm:left-4 w-13 h-13 sm:w-18 sm:h-18 rounded-2xl bg-[#1B143A]/90 border border-violet-400/25 p-1.5 sm:p-2 shadow-inner">
               <div class="relative w-full h-full">
-                <!-- Top-Left Lens -->
-                <div class="absolute top-0 left-0 w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-black/95 border border-violet-400/40 flex items-center justify-center shadow-md">
-                  <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-violet-600/70 border border-violet-300/30"></div>
+                <div class="absolute top-0 left-0 w-4.5 h-4.5 sm:w-6 sm:h-6 rounded-full bg-black/95 border border-violet-400/40 flex items-center justify-center shadow-md">
+                  <div class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-violet-600/70 border border-violet-300/30"></div>
                 </div>
-                <!-- Bottom-Left Lens -->
-                <div class="absolute bottom-0 left-0 w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-black/95 border border-violet-400/40 flex items-center justify-center shadow-md">
-                  <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-indigo-600/70 border border-indigo-300/30"></div>
+                <div class="absolute bottom-0 left-0 w-4.5 h-4.5 sm:w-6 sm:h-6 rounded-full bg-black/95 border border-violet-400/40 flex items-center justify-center shadow-md">
+                  <div class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-indigo-600/70 border border-indigo-300/30"></div>
                 </div>
-                <!-- Middle-Right Lens -->
-                <div class="absolute top-1/2 -translate-y-1/2 right-0 w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-black/95 border border-violet-400/40 flex items-center justify-center shadow-md">
-                  <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-purple-600/70 border border-purple-300/30"></div>
+                <div class="absolute top-1/2 -translate-y-1/2 right-0 w-4.5 h-4.5 sm:w-6 sm:h-6 rounded-full bg-black/95 border border-violet-400/40 flex items-center justify-center shadow-md">
+                  <div class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-purple-600/70 border border-purple-300/30"></div>
                 </div>
-                <!-- Flash & LiDAR -->
-                <div class="absolute top-1 right-2 w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-amber-100/90 shadow-[0_0_6px_rgba(251,191,36,0.8)]"></div>
-                <div class="absolute bottom-1.5 right-2 w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-black border border-violet-900/60"></div>
+                <div class="absolute top-1 right-1.5 w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-amber-100/90 shadow-[0_0_5px_rgba(251,191,36,0.8)]"></div>
+                <div class="absolute bottom-1 right-1.5 w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-black border border-violet-900/60"></div>
               </div>
             </div>
-            <!-- StudentOS Logo Ambient Imprint -->
+            <!-- StudentOS Watermark Imprint -->
             <div class="absolute inset-0 flex items-center justify-center opacity-15">
               <img src="StudentOS_Logo.png" alt="StudentOS" class="w-18 h-18 sm:w-24 sm:h-24 object-contain" onerror="this.src='StudentOS_L';" />
             </div>
@@ -246,19 +240,16 @@
 
           <!-- Layer 1: Titanium Mid-Frame & Logic Core (Room v10 & AI Engine) -->
           <div id="layer-core" class="phone-layer bg-gradient-to-b from-[#1C1542] to-[#100B29] border border-purple-400/40 p-2 sm:p-3.5 flex flex-col justify-between shadow-2xl overflow-hidden">
-            <!-- Top Chipset (Gemini AI Chain) -->
             <div class="w-full p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl bg-black/80 border border-violet-500/30 font-mono text-[8px] sm:text-[9px] text-violet-300">
               <div class="text-[7px] sm:text-[8px] text-os-muted uppercase">Primary Logic Subsystem</div>
               <div class="font-bold text-white text-[9px] sm:text-[11px] mt-0.5 truncate">gemini-3.6-flash</div>
               <div class="text-[7px] sm:text-[8px] text-emerald-400 mt-0.5 truncate">Bounded Fallback Chain · OpenRouter</div>
             </div>
-            <!-- Center Room v10 Storage -->
             <div class="w-full p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl bg-black/80 border border-violet-500/30 font-mono text-[8px] sm:text-[9px] text-slate-300">
               <div class="text-[7px] sm:text-[8px] text-os-muted uppercase">Local Persistence Engine</div>
               <div class="font-bold text-white text-[9px] sm:text-[11px] mt-0.5 truncate">Room DB v10 (SQLite)</div>
               <div class="text-[7px] sm:text-[8px] text-amber-400 mt-0.5 truncate">Max-Merge Streak Synchronization</div>
             </div>
-            <!-- Bottom SOS Battery & Foreground Service Core -->
             <div class="w-full p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl bg-red-950/60 border border-red-500/40 font-mono text-[8px] sm:text-[9px] text-red-300">
               <div class="font-bold text-white text-[9px] sm:text-[11px] truncate">SOS Foreground Service Core</div>
               <div class="text-[7px] sm:text-[8px] text-red-200 mt-0.5 truncate">SEND_SMS · CALL_PHONE Hardened</div>
@@ -284,7 +275,7 @@
                  class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0 z-40" />
 
             <!-- Precision iPhone Dynamic Island Pill -->
-            <div class="absolute top-2 sm:top-2.5 left-1/2 -translate-x-1/2 w-14 sm:w-20 h-3.5 sm:h-4.5 rounded-full bg-black border border-white/10 flex items-center justify-between px-2 shadow-lg z-50 pointer-events-none">
+            <div class="absolute top-2 sm:top-2.5 left-1/2 -translate-x-1/2 w-14 sm:w-20 h-3 sm:h-4.5 rounded-full bg-black border border-white/10 flex items-center justify-between px-2 shadow-lg z-50 pointer-events-none">
               <div class="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#0a0717] border border-violet-900/40"></div>
               <div class="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-[#06040f]"></div>
             </div>
@@ -310,76 +301,76 @@
           <div class="absolute -left-[2px] top-26 sm:top-34 w-[2px] sm:w-[3px] h-7 sm:h-10 bg-gradient-to-b from-slate-300 via-slate-400 to-slate-500 rounded-l-sm shadow-[0_0_4px_rgba(255,255,255,0.2)]"></div>
           <div class="absolute -left-[2px] top-35 sm:top-46 w-[2px] sm:w-[3px] h-7 sm:h-10 bg-gradient-to-b from-slate-300 via-slate-400 to-slate-500 rounded-l-sm shadow-[0_0_4px_rgba(255,255,255,0.2)]"></div>
 
-          <!-- Soft Ground Reflection Shadow -->
+          <!-- Ground Reflection Shadow -->
           <div class="phone-ground-shadow"></div>
         </div>
       </div>
 
-      <!-- ================= SCENIC EDITORIAL OVERLAYS ================= -->
+      <!-- ================= SCENIC EDITORIAL OVERLAYS (SPATIALLY ISOLATED FROM PHONE) ================= -->
       
-      <!-- Sequence 0 -->
-      <div id="seq-0" class="absolute z-20 w-[92%] sm:w-[85%] max-w-xl inset-x-0 mx-auto md:inset-x-auto md:mx-0 md:left-24 bottom-2 sm:bottom-4 md:bottom-auto pointer-events-auto transition-all duration-700 opacity-100 transform translate-y-0 text-center md:text-left">
-        <div class="glass-card p-3.5 sm:p-5 md:p-0 md:bg-transparent md:border-0 md:backdrop-blur-none rounded-2xl md:rounded-none shadow-2xl md:shadow-none">
-          <div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full border border-os-border bg-os-surface/90 text-[10px] sm:text-[11px] font-mono text-os-lavender mb-1.5 sm:mb-4 shadow-sm">
+      <!-- Sequence 0 (Left on Desktop) -->
+      <div id="seq-0" class="absolute z-20 w-[92%] sm:w-[85%] md:w-[400px] lg:w-[460px] max-w-lg left-1/2 -translate-x-1/2 md:left-12 lg:left-20 xl:left-28 md:translate-x-0 bottom-3 sm:bottom-5 md:bottom-auto pointer-events-auto transition-all duration-700 opacity-100 transform translate-y-0 text-center md:text-left">
+        <div class="glass-card p-4 sm:p-6 md:p-8 rounded-3xl border border-os-border shadow-2xl">
+          <div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 rounded-full border border-os-border bg-os-surface/90 text-[10px] sm:text-[11px] font-mono text-os-lavender mb-2 sm:mb-4 shadow-sm">
             <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <span>Verified Production V1.0.0 · Android API 26+</span>
           </div>
-          <h1 class="text-xl sm:text-3xl md:text-6xl font-extrabold text-white tracking-tight leading-tight md:leading-[1.12]">
+          <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
             Built on Real <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-os-lavender to-violet-300">Architecture</span>.
           </h1>
-          <p class="text-slate-300 text-[11px] sm:text-sm md:text-base mt-1 md:mt-4 leading-relaxed max-w-lg mx-auto md:mx-0">
+          <p class="text-slate-300 text-xs sm:text-sm lg:text-base mt-2 sm:mt-4 leading-relaxed max-w-md mx-auto md:mx-0">
             Not a mockup or prototype. A unified Android operating system crafted with Jetpack Compose, local-first Room DB, and bounded multi-stage AI.
           </p>
-          <div class="mt-2 sm:mt-5 flex items-center justify-center md:justify-start gap-2 text-[10px] sm:text-xs font-mono text-os-lavender">
-            <i data-lucide="arrow-down" class="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-bounce text-os-primary"></i>
+          <div class="mt-3 sm:mt-6 flex items-center justify-center md:justify-start gap-2 text-xs font-mono text-os-lavender">
+            <i data-lucide="arrow-down" class="w-4 h-4 animate-bounce text-os-primary"></i>
             <span>Scroll down to deconstruct layers</span>
           </div>
         </div>
       </div>
 
-      <!-- Sequence 1 -->
-      <div id="seq-1" class="absolute z-20 w-[92%] sm:w-[85%] max-w-md inset-x-0 mx-auto md:inset-x-auto md:mx-0 md:left-auto md:right-24 bottom-2 sm:bottom-4 md:bottom-auto pointer-events-auto transition-all duration-700 opacity-0 transform translate-y-6">
-        <div class="glass-card p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl border border-os-border shadow-2xl">
-          <div class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-os-accent mb-1 sm:mb-2">Internal Subsystems</div>
-          <h2 class="text-lg sm:text-2xl md:text-3xl font-bold text-white tracking-tight">Built on Local-First Canvas</h2>
-          <p class="text-slate-300 text-xs sm:text-sm mt-1 sm:mt-3 leading-relaxed">
+      <!-- Sequence 1 (Right on Desktop) -->
+      <div id="seq-1" class="absolute z-20 w-[92%] sm:w-[85%] md:w-[400px] lg:w-[460px] max-w-lg left-1/2 -translate-x-1/2 md:left-auto md:right-12 lg:right-20 xl:right-28 md:translate-x-0 bottom-3 sm:bottom-5 md:bottom-auto pointer-events-auto transition-all duration-700 opacity-0 transform translate-y-6">
+        <div class="glass-card p-4 sm:p-6 md:p-8 rounded-3xl border border-os-border shadow-2xl">
+          <div class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-os-accent mb-1.5 sm:mb-2">Internal Subsystems</div>
+          <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight">Built on Local-First Canvas</h2>
+          <p class="text-slate-300 text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
             Deconstructed layers reveal the Room DB v10 persistence engine with max-merge streak protection, course syllabus management, and bounded fallback chains.
           </p>
-          <div class="mt-2 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2 font-mono text-[9px] sm:text-[10px] text-os-lavender">
-            <span class="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-black/50 rounded-lg border border-os-border">Algorithms CS201</span>
-            <span class="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-black/50 rounded-lg border border-os-border">OS CS301</span>
-            <span class="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-black/50 rounded-lg border border-os-border">Room v10</span>
+          <div class="mt-3 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2 font-mono text-[9px] sm:text-[10px] text-os-lavender">
+            <span class="px-2.5 py-1 bg-black/50 rounded-lg border border-os-border">Algorithms CS201</span>
+            <span class="px-2.5 py-1 bg-black/50 rounded-lg border border-os-border">OS CS301</span>
+            <span class="px-2.5 py-1 bg-black/50 rounded-lg border border-os-border">Room v10</span>
           </div>
         </div>
       </div>
 
-      <!-- Sequence 2 -->
-      <div id="seq-2" class="absolute z-20 w-[92%] sm:w-[85%] max-w-md inset-x-0 mx-auto md:inset-x-auto md:mx-0 md:left-24 bottom-2 sm:bottom-4 md:bottom-auto pointer-events-auto transition-all duration-700 opacity-0 transform translate-y-6">
-        <div class="glass-card p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl border border-purple-500/30 shadow-2xl">
-          <div class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-os-accent mb-1 sm:mb-2">The Complete Experience</div>
-          <h2 class="text-lg sm:text-2xl md:text-3xl font-bold text-white tracking-tight">Made for Student Life</h2>
-          <p class="text-slate-300 text-xs sm:text-sm mt-1 sm:mt-3 leading-relaxed">
+      <!-- Sequence 2 (Left on Desktop) -->
+      <div id="seq-2" class="absolute z-20 w-[92%] sm:w-[85%] md:w-[400px] lg:w-[460px] max-w-lg left-1/2 -translate-x-1/2 md:left-12 lg:left-20 xl:left-28 md:translate-x-0 bottom-3 sm:bottom-5 md:bottom-auto pointer-events-auto transition-all duration-700 opacity-0 transform translate-y-6">
+        <div class="glass-card p-4 sm:p-6 md:p-8 rounded-3xl border border-purple-500/30 shadow-2xl">
+          <div class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-os-accent mb-1.5 sm:mb-2">The Complete Experience</div>
+          <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight">Made for Student Life</h2>
+          <p class="text-slate-300 text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
             Every layer converges into a single, cohesive consumer product. Flow-state timers integrated directly into academic objectives and streaks, rather than an isolated stopwatch.
           </p>
-          <div class="mt-2 sm:mt-4 font-mono text-[10px] sm:text-[11px] text-emerald-400 flex items-center gap-1.5">
+          <div class="mt-3 sm:mt-4 font-mono text-[10px] sm:text-[11px] text-emerald-400 flex items-center gap-1.5">
             <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
             <span>Tested & Physically Verified on SM-M225FV</span>
           </div>
         </div>
       </div>
 
-      <!-- Sequence 3 -->
-      <div id="seq-3" class="absolute z-20 w-[92%] sm:w-[85%] max-w-md inset-x-0 mx-auto md:inset-x-auto md:mx-0 md:left-auto md:right-24 bottom-2 sm:bottom-4 md:bottom-auto pointer-events-auto transition-all duration-700 opacity-0 transform translate-y-6">
-        <div class="glass-card p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl border border-red-500/30 shadow-2xl">
-          <div class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-red-400 mb-1 sm:mb-2">Precision & Security</div>
-          <h2 class="text-lg sm:text-2xl md:text-3xl font-bold text-white tracking-tight">The Mission-Critical Core</h2>
-          <p class="text-slate-300 text-xs sm:text-sm mt-1 sm:mt-3 leading-relaxed">
+      <!-- Sequence 3 (Right on Desktop) -->
+      <div id="seq-3" class="absolute z-20 w-[92%] sm:w-[85%] md:w-[400px] lg:w-[460px] max-w-lg left-1/2 -translate-x-1/2 md:left-auto md:right-12 lg:right-20 xl:right-28 md:translate-x-0 bottom-3 sm:bottom-5 md:bottom-auto pointer-events-auto transition-all duration-700 opacity-0 transform translate-y-6">
+        <div class="glass-card p-4 sm:p-6 md:p-8 rounded-3xl border border-red-500/30 shadow-2xl">
+          <div class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-red-400 mb-1.5 sm:mb-2">Precision & Security</div>
+          <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight">The Mission-Critical Core</h2>
+          <p class="text-slate-300 text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
             Macro-level hardware and background coordination. Dedicated SEND_SMS and CALL_PHONE foreground handlers paired with gemini-3.6-flash chapter synthesis without artificial progress bars.
           </p>
-          <div class="mt-2 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2 font-mono text-[9px] sm:text-[10px] text-red-300">
-            <span class="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-red-950/40 rounded-lg border border-red-500/30">SEND_SMS</span>
-            <span class="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-red-950/40 rounded-lg border border-red-500/30">CALL_PHONE</span>
-            <span class="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-red-950/40 rounded-lg border border-red-500/30">SOS Verified</span>
+          <div class="mt-3 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2 font-mono text-[9px] sm:text-[10px] text-red-300">
+            <span class="px-2.5 py-1 bg-red-950/40 rounded-lg border border-red-500/30">SEND_SMS</span>
+            <span class="px-2.5 py-1 bg-red-950/40 rounded-lg border border-red-500/30">CALL_PHONE</span>
+            <span class="px-2.5 py-1 bg-red-950/40 rounded-lg border border-red-500/30">SOS Verified</span>
           </div>
         </div>
       </div>
@@ -526,7 +517,7 @@
         <span>Originated as a Little Kites Individual Submission</span>
       </div>
       <div class="flex items-center gap-6">
-        <a href="https://github.com/GLITCHLORDX/StudentOS/blob/main/PRIVACY_POLICY.md" target="_blank" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="privacy-policy/" class="hover:text-white transition-colors">Privacy Policy</a>
         <a href="https://github.com/GLITCHLORDX/StudentOS" target="_blank" class="hover:text-white transition-colors">GitHub Repository</a>
       </div>
     </div>
@@ -593,7 +584,6 @@
       const assembly = document.getElementById('phone-assembly');
       const layerBack = document.getElementById('layer-back');
       const layerCore = document.getElementById('layer-core');
-      const layerScreen = document.getElementById('layer-screen');
       const layerGlass = document.getElementById('layer-glass');
 
       const screen0 = document.getElementById('screen-0');
@@ -627,13 +617,27 @@
         return start * (1 - t) + end * t;
       }
 
-      function onScroll() {
-        const rect = track.getBoundingClientRect();
-        const totalScrollable = rect.height - window.innerHeight;
-        const currentScrolled = -rect.top;
-        const progress = Math.max(0, Math.min(1, currentScrolled / totalScrollable));
+      let targetProgress = 0;
+      let currentProgress = 0;
 
-        const isMobile = window.innerWidth < 768;
+      function updateScrollTarget() {
+        const rect = track.getBoundingClientRect();
+        const total = rect.height - window.innerHeight;
+        if (total > 0) {
+          targetProgress = Math.max(0, Math.min(1, -rect.top / total));
+        }
+      }
+
+      function renderFrame() {
+        // Kinetic ease dampening
+        currentProgress += (targetProgress - currentProgress) * 0.085;
+        const progress = currentProgress;
+
+        const w = window.innerWidth;
+        const isMobile = w < 768;
+
+        // Dynamic horizontal separation prevents overlap on desktop
+        const deskOffset = Math.min(340, Math.max(240, w * 0.22));
 
         let rotX = 0, rotY = 0, rotZ = 0;
         let posX = 0, posY = 0, scale = 1;
@@ -641,54 +645,54 @@
 
         if (progress < 0.25) {
           const p = progress / 0.25;
-          rotX = lerp(6, 2, p);
-          rotY = isMobile ? lerp(-6, 6, p) : lerp(-16, 12, p);
+          rotX = lerp(4, 1, p);
+          rotY = isMobile ? lerp(-3, 3, p) : lerp(-14, 10, p);
           rotZ = 0;
-          posX = isMobile ? 0 : lerp(120, -140, p);
+          posX = isMobile ? 0 : lerp(deskOffset, -deskOffset, p);
           posY = 0;
-          scale = isMobile ? lerp(0.98, 1.02, p) : lerp(1.0, 1.03, p);
-          explodeZ = lerp(0, isMobile ? 0.35 : 1.45, p);
+          scale = isMobile ? 0.98 : lerp(1.0, 1.04, p);
+          explodeZ = lerp(0, isMobile ? 0.35 : 1.35, p);
 
           screen0.style.opacity = "1";
           screen1.style.opacity = "0";
           screen2.style.opacity = "0";
           screen3.style.opacity = "0";
 
-          seq0.style.opacity = "1"; seq0.style.transform = "translateY(0px)";
-          seq1.style.opacity = "0"; seq1.style.transform = "translateY(24px)";
+          seq0.style.opacity = "1"; seq0.style.transform = isMobile ? "translate(-50%, 0px)" : "translateY(0px)";
+          seq1.style.opacity = "0"; seq1.style.transform = isMobile ? "translate(-50%, 20px)" : "translateY(24px)";
           seq2.style.opacity = "0";
           seq3.style.opacity = "0";
           updateActiveStep(0);
 
         } else if (progress >= 0.25 && progress < 0.55) {
           const p = (progress - 0.25) / 0.30;
-          rotX = lerp(2, -2, p);
-          rotY = isMobile ? lerp(6, -6, p) : lerp(12, -14, p);
+          rotX = lerp(1, -2, p);
+          rotY = isMobile ? lerp(3, -3, p) : lerp(10, -12, p);
           rotZ = 0;
-          posX = isMobile ? 0 : lerp(-140, 130, p);
+          posX = isMobile ? 0 : lerp(-deskOffset, deskOffset, p);
           posY = 0;
-          scale = isMobile ? 1.02 : lerp(1.03, 1.05, p);
-          explodeZ = lerp(isMobile ? 0.35 : 1.45, 0, p);
+          scale = isMobile ? 1.0 : lerp(1.04, 1.06, p);
+          explodeZ = lerp(isMobile ? 0.35 : 1.35, 0, p);
 
           screen0.style.opacity = "0";
           screen1.style.opacity = "1";
           screen2.style.opacity = "0";
           screen3.style.opacity = "0";
 
-          seq0.style.opacity = "0"; seq0.style.transform = "translateY(24px)";
-          seq1.style.opacity = "1"; seq1.style.transform = "translateY(0px)";
-          seq2.style.opacity = "0";
+          seq0.style.opacity = "0";
+          seq1.style.opacity = "1"; seq1.style.transform = isMobile ? "translate(-50%, 0px)" : "translateY(0px)";
+          seq2.style.opacity = "0"; seq2.style.transform = isMobile ? "translate(-50%, 20px)" : "translateY(24px)";
           seq3.style.opacity = "0";
           updateActiveStep(1);
 
         } else if (progress >= 0.55 && progress < 0.80) {
           const p = (progress - 0.55) / 0.25;
-          rotX = lerp(-2, 8, p);
-          rotY = isMobile ? lerp(-6, 8, p) : lerp(-14, 20, p);
+          rotX = lerp(-2, 7, p);
+          rotY = isMobile ? lerp(-3, 5, p) : lerp(-12, 18, p);
           rotZ = 0;
-          posX = isMobile ? 0 : lerp(130, -110, p);
+          posX = isMobile ? 0 : lerp(deskOffset, -deskOffset, p);
           posY = 0;
-          scale = isMobile ? 1.03 : lerp(1.05, 1.10, p);
+          scale = isMobile ? 1.02 : lerp(1.06, 1.10, p);
           explodeZ = 0;
 
           screen0.style.opacity = "0";
@@ -698,18 +702,18 @@
 
           seq0.style.opacity = "0";
           seq1.style.opacity = "0";
-          seq2.style.opacity = "0"; seq2.style.transform = "translateY(24px)";
-          seq3.style.opacity = "0"; seq3.style.transform = "translateY(24px)";
+          seq2.style.opacity = "1"; seq2.style.transform = isMobile ? "translate(-50%, 0px)" : "translateY(0px)";
+          seq3.style.opacity = "0"; seq3.style.transform = isMobile ? "translate(-50%, 20px)" : "translateY(24px)";
           updateActiveStep(2);
 
         } else {
           const p = Math.min(1, (progress - 0.80) / 0.20);
-          rotX = lerp(8, 18, p);
-          rotY = isMobile ? lerp(8, 16, p) : lerp(20, 50, p);
-          rotZ = isMobile ? 0 : lerp(0, -6, p);
-          posX = isMobile ? 0 : lerp(-110, -75, p);
-          posY = isMobile ? 0 : lerp(0, -30, p);
-          scale = isMobile ? lerp(1.03, 1.09, p) : lerp(1.10, 1.55, p);
+          rotX = lerp(7, 16, p);
+          rotY = isMobile ? lerp(5, 12, p) : lerp(18, 36, p);
+          rotZ = isMobile ? 0 : lerp(0, -4, p);
+          posX = isMobile ? 0 : lerp(-deskOffset, -deskOffset * 0.8, p);
+          posY = isMobile ? 0 : lerp(0, -25, p);
+          scale = isMobile ? 1.04 : lerp(1.10, 1.35, p);
           explodeZ = 0;
 
           screen0.style.opacity = "0";
@@ -720,21 +724,23 @@
           seq0.style.opacity = "0";
           seq1.style.opacity = "0";
           seq2.style.opacity = "0";
-          seq3.style.opacity = "1"; seq3.style.transform = "translateY(0px)";
+          seq3.style.opacity = "1"; seq3.style.transform = isMobile ? "translate(-50%, 0px)" : "translateY(0px)";
           updateActiveStep(3);
         }
 
         assembly.style.transform = `translate3d(${posX}px, ${posY}px, 0px) rotateX(${rotX}deg) rotateY(${rotY}deg) rotateZ(${rotZ}deg) scale(${scale})`;
 
-        layerBack.style.transform = `translate3d(0, 0, ${-80 * explodeZ}px)`;
-        layerCore.style.transform = `translate3d(${28 * explodeZ}px, 0, ${-25 * explodeZ}px)`;
-        layerScreen.style.transform = `translate3d(0, 0, ${32 * explodeZ}px)`;
-        layerGlass.style.transform = `translate3d(${-28 * explodeZ}px, 0, ${90 * explodeZ}px)`;
+        layerBack.style.transform = `translate3d(0, 0, ${-75 * explodeZ}px)`;
+        layerCore.style.transform = `translate3d(${26 * explodeZ}px, 0, ${-25 * explodeZ}px)`;
+        layerGlass.style.transform = `translate3d(${-26 * explodeZ}px, 0, ${85 * explodeZ}px)`;
+
+        requestAnimationFrame(renderFrame);
       }
 
-      window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', onScroll);
-      onScroll();
+      window.addEventListener('scroll', updateScrollTarget, { passive: true });
+      window.addEventListener('resize', updateScrollTarget);
+      updateScrollTarget();
+      renderFrame();
     })();
   </script>
 </body>

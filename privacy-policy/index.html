@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudentOS — Privacy Policy</title>
+  <link rel="icon" type="image/png" href="../StudentOS_Logo.png" />
+
+  <!-- Tailwind CSS & Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            os: {
+              bg: '#040308',
+              surface: '#0E0B1C',
+              elevated: '#17122E',
+              border: 'rgba(139, 92, 246, 0.22)',
+              primary: '#8B5CF6',
+              primaryHover: '#7C3AED',
+              lavender: '#C4B5FD',
+              accent: '#A78BFA',
+              sos: '#EF4444',
+              eco: '#10B981'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Arial', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+      line-height: 1.75;
+      background-color: #0A0912;
+      color: #E8E5F2;
+      overflow-x: hidden;
+    }
+    .glass-nav {
+      background: rgba(7, 5, 14, 0.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(139, 92, 246, 0.16);
+    }
+    .container {
+      max-width: 850px;
+      margin: auto;
+      padding: 40px 22px;
+    }
+    h1 {
+      color: #B9A7FF;
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+    }
+    h2 {
+      color: #A78BFA;
+      font-size: 22px;
+      font-weight: 700;
+      margin-top: 36px;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+    }
+    p, li {
+      color: #D6D2E0;
+      font-size: 15px;
+    }
+    p {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    ul {
+      padding-left: 24px;
+      margin-top: 12px;
+      margin-bottom: 16px;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+    .updated {
+      color: #A9A3B8;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    a {
+      color: #B9A7FF;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s ease;
+    }
+    a:hover {
+      color: #FFFFFF;
+    }
+    .box {
+      background: #131024;
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin: 25px 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #0A0912; }
+    ::-webkit-scrollbar-thumb { background: #17122E; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #8B5CF6; }
+  </style>
+</head>
+
+<body class="font-sans antialiased selection:bg-os-primary selection:text-white flex flex-col min-h-screen">
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="sticky top-0 inset-x-0 z-50 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo linking to homepage -->
+      <a href="../" class="flex items-center gap-2.5 sm:gap-3.5 group" style="text-decoration: none;">
+        <div class="relative w-9 h-9 sm:w-11 sm:h-11 rounded-2xl overflow-hidden p-1 bg-gradient-to-br from-violet-500/40 via-purple-600/20 to-transparent border border-os-border shadow-[0_0_24px_rgba(139,92,246,0.4)] group-hover:scale-105 transition-all flex-shrink-0">
+          <img src="../StudentOS_Logo.png" alt="StudentOS" class="w-full h-full object-contain rounded-xl" onerror="this.src='../StudentOS_L';" />
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-1.5 sm:gap-2">
+            <span class="text-base sm:text-xl font-extrabold tracking-tight text-white flex items-center">
+              Student<span class="text-os-primary">OS</span>
+            </span>
+            <span class="text-[9px] sm:text-[10px] font-mono font-bold px-1.5 sm:px-2 py-0.5 rounded-full bg-os-primary/20 border border-os-primary/40 text-os-lavender">v1.0.0</span>
+          </div>
+          <span class="hidden sm:inline text-[10px] font-mono text-slate-400 tracking-wider uppercase -mt-0.5">The Unified Student Life OS</span>
+        </div>
+      </a>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2.5 sm:gap-4">
+        <!-- Back to Website Link -->
+        <a href="../" class="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl border border-os-border bg-os-surface hover:bg-os-elevated text-slate-200 hover:text-white text-xs font-semibold transition-all shadow-sm group" style="text-decoration: none;">
+          <i data-lucide="arrow-left" class="w-3.5 h-3.5 text-os-lavender group-hover:-translate-x-0.5 transition-transform"></i>
+          <span>Back to Website</span>
+        </a>
+
+        <!-- GitHub Repository Link -->
+        <a href="https://github.com/GLITCHLORDX/StudentOS" target="_blank" rel="noopener noreferrer" 
+           aria-label="View StudentOS source code on GitHub"
+           class="inline-flex items-center gap-2 p-2 sm:px-3 sm:py-2 rounded-xl border border-os-border bg-os-surface hover:bg-os-elevated text-slate-200 hover:text-white transition-all shadow-sm group" style="text-decoration: none;">
+          <svg class="w-4 h-4 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          <span class="hidden sm:inline font-mono text-xs font-semibold">GitHub</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="flex-grow py-8 sm:py-12">
+    <div class="container">
+
+      <h1>StudentOS Privacy Policy</h1>
+
+      <p class="updated">Last updated: October 1, 2026</p>
+
+      <div class="box">
+        <strong>StudentOS</strong> is a student-focused Android application designed to bring
+        study, productivity, focus, safety, and other student tools together in one place.
+      </div>
+
+      <h2>1. Information We Collect</h2>
+
+      <p>
+        StudentOS may process information that you provide while using the application.
+        Depending on the features you use, this may include:
+      </p>
+
+      <ul>
+        <li>Account and authentication information.</li>
+        <li>Student profile and preference information.</li>
+        <li>Subjects, notes, flashcards, quizzes, exams, courses, and study information.</li>
+        <li>Tasks, focus sessions, and study sessions.</li>
+        <li>Gamification information such as XP, streaks, and achievements.</li>
+        <li>Emergency contact information that you choose to save.</li>
+        <li>AI conversations and supported attachments that you submit to the AI features.</li>
+        <li>Information required to synchronize supported app data across devices.</li>
+      </ul>
+
+      <h2>2. Information Stored on Your Device</h2>
+
+      <p>
+        StudentOS stores certain information locally on your Android device so that
+        features can work efficiently and, where supported, while offline.
+      </p>
+
+      <p>
+        Local storage may include application settings, locally cached content,
+        student data, and other information necessary for the application's operation.
+      </p>
+
+      <h2>3. Cloud Synchronization</h2>
+
+      <p>
+        StudentOS provides account-based cloud synchronization for supported user data.
+        When you use synchronization features, applicable data may be transmitted to
+        and stored using Supabase services.
+      </p>
+
+      <p>
+        Cloud synchronization is intended to allow supported StudentOS data to be
+        restored when you sign in to the same account on another or newly installed
+        device.
+      </p>
+
+      <h2>4. Authentication</h2>
+
+      <p>
+        StudentOS uses account authentication to associate synchronized data with
+        your account. Authentication information is processed by the authentication
+        services used by the application.
+      </p>
+
+      <h2>5. StudentOS AI</h2>
+
+      <p>
+        StudentOS includes AI-powered features that can help with study-related
+        interactions.
+      </p>
+
+      <p>
+        When you submit a prompt, supported document, image, or other attachment to
+        an AI feature, the submitted content may be transmitted to the AI service
+        configured by StudentOS in order to generate a response.
+      </p>
+
+      <p>
+        AI conversations may also be stored as part of your StudentOS data so that
+        your conversation history and supported synchronized data can be restored.
+      </p>
+
+      <h2>6. Documents and Images</h2>
+
+      <p>
+        StudentOS may allow you to select documents or images for supported features,
+        including AI interactions.
+      </p>
+
+      <p>
+        Files are processed only when required by the feature you choose to use.
+        You should avoid submitting sensitive or confidential information unless
+        you are comfortable with the processing required by that feature.
+      </p>
+
+      <h2>7. Emergency and Safety Features</h2>
+
+      <p>
+        StudentOS includes optional emergency and safety functionality.
+      </p>
+
+      <p>
+        If you choose to use SOS or related emergency functionality, the application
+        may use permissions such as calling, SMS messaging, and location access to
+        perform the emergency action you requested.
+      </p>
+
+      <p>
+        Location information used by emergency functionality is intended to support
+        the emergency action initiated by you. These permissions are not intended
+        to provide continuous location tracking when the emergency feature is not
+        being used.
+      </p>
+
+      <p>
+        Emergency contacts are contacts that you choose to configure within the
+        application.
+      </p>
+
+      <h2>8. Permissions</h2>
+
+      <p>
+        StudentOS may request Android permissions that are necessary for particular
+        features. Depending on the features you use, these can include permissions
+        related to notifications, storage or media access, location, phone calls,
+        and SMS messaging.
+      </p>
+
+      <p>
+        You can manage Android permissions through your device's system settings.
+        Some StudentOS features may not work correctly if required permissions are
+        denied.
+      </p>
+
+      <h2>9. Data Security</h2>
+
+      <p>
+        StudentOS uses local Android storage and authenticated cloud services to
+        protect application data. Access to synchronized user data is restricted
+        according to the application's account and authorization mechanisms.
+      </p>
+
+      <p>
+        No method of electronic storage or transmission can be guaranteed to be
+        completely secure.
+      </p>
+
+      <h2>10. Data Deletion</h2>
+
+      <p>
+        StudentOS provides account and application data-management functionality.
+        Signing out removes the applicable user data from the local device according
+        to the application's local data-wipe behavior.
+      </p>
+
+      <p>
+        If you want to request deletion of account-associated cloud data or have a
+        privacy-related question, contact the developer using the contact method
+        provided below.
+      </p>
+
+      <h2>11. Third-Party Services</h2>
+
+      <p>
+        StudentOS may use third-party services to provide authentication, cloud
+        synchronization, and AI functionality.
+      </p>
+
+      <p>
+        These services may process information as necessary to provide their
+        respective functionality and are subject to their own privacy policies
+        and terms.
+      </p>
+
+      <h2>12. Children's Privacy</h2>
+
+      <p>
+        StudentOS is designed as an educational and productivity application for
+        students. We do not knowingly request children to provide personal
+        information beyond what is necessary for the application's functionality.
+      </p>
+
+      <p>
+        If you believe that personal information has been provided to StudentOS
+        improperly, please contact the developer so that the matter can be reviewed.
+      </p>
+
+      <h2>13. Changes to This Privacy Policy</h2>
+
+      <p>
+        This Privacy Policy may be updated from time to time to reflect changes to
+        StudentOS, its services, or applicable requirements.
+      </p>
+
+      <p>
+        When changes are made, the updated policy will be published on this page
+        with a revised "Last updated" date.
+      </p>
+
+      <h2>14. Contact</h2>
+
+      <p>
+        For privacy questions, data-deletion requests, or other concerns regarding
+        this Privacy Policy, please contact the StudentOS developer through the
+        official StudentOS project repository.
+      </p>
+
+      <p>
+        Developer: Faizaan Ameen
+      </p>
+
+      <p>
+        StudentOS — The Unified Operating System for Student Life
+      </p>
+
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="py-10 border-t border-os-border/30 bg-[#040308] text-xs text-slate-400 mt-auto">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <img src="../StudentOS_Logo.png" alt="Logo" class="w-5 h-5 object-contain" onerror="this.src='../StudentOS_L';" />
+        <span class="text-white font-medium">StudentOS V1.0.0</span>
+        <span class="text-slate-600">|</span>
+        <span>Originated as a Little Kites Individual Submission</span>
+      </div>
+      <div class="flex items-center gap-6" style="text-decoration: none;">
+        <a href="../" class="hover:text-white transition-colors" style="text-decoration: none;">Home</a>
+        <a href="./" class="text-white font-semibold" style="text-decoration: none;">Privacy Policy</a>
+        <a href="https://github.com/GLITCHLORDX/StudentOS" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" style="text-decoration: none;">GitHub Repository</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+  </script>
+</body>
+</html>
