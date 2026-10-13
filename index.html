@@ -31,7 +31,8 @@
               lavender: '#C4B5FD',
               accent: '#A78BFA',
               sos: '#EF4444',
-              eco: '#10B981'
+              eco: '#10B981',
+              muted: '#8F8AA3'
             }
           },
           fontFamily: {
@@ -154,7 +155,7 @@
       <!-- Brand Logo -->
       <a href="#" class="flex items-center gap-2.5 sm:gap-3.5 group">
         <div class="relative w-9 h-9 sm:w-11 sm:h-11 rounded-2xl overflow-hidden p-1 bg-gradient-to-br from-violet-500/40 via-purple-600/20 to-transparent border border-os-border shadow-[0_0_24px_rgba(139,92,246,0.4)] group-hover:scale-105 transition-all flex-shrink-0">
-          <img src="StudentOS_Logo.png" alt="StudentOS" class="w-full h-full object-contain rounded-xl" onerror="this.src='StudentOS_L';" />
+          <img src="StudentOS_Logo.png" alt="StudentOS" class="w-full h-full object-contain rounded-xl" onerror="this.onerror=null; this.style.display='none';" />
         </div>
         <div class="flex flex-col">
           <div class="flex items-center gap-1.5 sm:gap-2">
@@ -179,6 +180,14 @@
 
       <!-- Action Buttons -->
       <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Always-visible APKPure store link -->
+        <a href="https://apkpure.com/p/com.studentos.app" target="_blank" rel="noopener noreferrer"
+           aria-label="Download StudentOS from APKPure"
+           class="inline-flex items-center justify-center gap-1.5 px-2.5 sm:px-3.5 py-2 sm:py-2.5 rounded-xl border border-os-primary/50 bg-os-primary/15 hover:bg-os-primary/25 text-os-lavender hover:text-white transition-all whitespace-nowrap">
+          <i data-lucide="store" class="w-4 h-4"></i>
+          <span class="font-mono text-[10px] sm:text-xs font-semibold">APKPure</span>
+        </a>
+
         <!-- Prominent GitHub Repository Link -->
         <a href="https://github.com/GLITCHLORDX/StudentOS" target="_blank" rel="noopener noreferrer" 
            aria-label="View StudentOS source code on GitHub"
@@ -218,15 +227,15 @@
           <!-- Layer 0: Titanium Matte Glass Back Chassis + Pro Camera Island -->
           <div id="layer-back" class="phone-layer bg-gradient-to-b from-[#15102D] via-[#0E0A22] to-[#070514] border border-violet-400/35 shadow-2xl overflow-hidden">
             <!-- Camera Island -->
-            <div class="absolute top-2.5 left-2.5 sm:top-4 sm:left-4 w-13 h-13 sm:w-18 sm:h-18 rounded-2xl bg-[#1B143A]/90 border border-violet-400/25 p-1.5 sm:p-2 shadow-inner">
+            <div class="absolute top-2.5 left-2.5 sm:top-4 sm:left-4 w-[3.25rem] h-[3.25rem] sm:w-[4.5rem] sm:h-[4.5rem] rounded-2xl bg-[#1B143A]/90 border border-violet-400/25 p-1.5 sm:p-2 shadow-inner">
               <div class="relative w-full h-full">
-                <div class="absolute top-0 left-0 w-4.5 h-4.5 sm:w-6 sm:h-6 rounded-full bg-black/95 border border-violet-400/40 flex items-center justify-center shadow-md">
+                <div class="absolute top-0 left-0 w-[1.125rem] h-[1.125rem] sm:w-6 sm:h-6 rounded-full bg-black/95 border border-violet-400/40 flex items-center justify-center shadow-md">
                   <div class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-violet-600/70 border border-violet-300/30"></div>
                 </div>
-                <div class="absolute bottom-0 left-0 w-4.5 h-4.5 sm:w-6 sm:h-6 rounded-full bg-black/95 border border-violet-400/40 flex items-center justify-center shadow-md">
+                <div class="absolute bottom-0 left-0 w-[1.125rem] h-[1.125rem] sm:w-6 sm:h-6 rounded-full bg-black/95 border border-violet-400/40 flex items-center justify-center shadow-md">
                   <div class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-indigo-600/70 border border-indigo-300/30"></div>
                 </div>
-                <div class="absolute top-1/2 -translate-y-1/2 right-0 w-4.5 h-4.5 sm:w-6 sm:h-6 rounded-full bg-black/95 border border-violet-400/40 flex items-center justify-center shadow-md">
+                <div class="absolute top-1/2 -translate-y-1/2 right-0 w-[1.125rem] h-[1.125rem] sm:w-6 sm:h-6 rounded-full bg-black/95 border border-violet-400/40 flex items-center justify-center shadow-md">
                   <div class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-purple-600/70 border border-purple-300/30"></div>
                 </div>
                 <div class="absolute top-1 right-1.5 w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-amber-100/90 shadow-[0_0_5px_rgba(251,191,36,0.8)]"></div>
@@ -235,7 +244,7 @@
             </div>
             <!-- StudentOS Watermark Imprint -->
             <div class="absolute inset-0 flex items-center justify-center opacity-15">
-              <img src="StudentOS_Logo.png" alt="StudentOS" class="w-18 h-18 sm:w-24 sm:h-24 object-contain" onerror="this.src='StudentOS_L';" />
+              <img src="StudentOS_Logo.png" alt="StudentOS" class="w-18 h-18 sm:w-24 sm:h-24 object-contain" onerror="this.onerror=null; this.style.display='none';" />
             </div>
           </div>
 
@@ -276,7 +285,7 @@
                  class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0 z-40" />
 
             <!-- Precision iPhone Dynamic Island Pill -->
-            <div class="absolute top-2 sm:top-2.5 left-1/2 -translate-x-1/2 w-14 sm:w-20 h-3 sm:h-4.5 rounded-full bg-black border border-white/10 flex items-center justify-between px-2 shadow-lg z-50 pointer-events-none">
+            <div class="absolute top-2 sm:top-2.5 left-1/2 -translate-x-1/2 w-14 sm:w-20 h-3 sm:h-[1.125rem] rounded-full bg-black border border-white/10 flex items-center justify-between px-2 shadow-lg z-50 pointer-events-none">
               <div class="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#0a0717] border border-violet-900/40"></div>
               <div class="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-[#06040f]"></div>
             </div>
@@ -298,9 +307,9 @@
           <div class="absolute -right-[2px] top-24 sm:top-36 w-[2px] sm:w-[3px] h-10 sm:h-14 bg-gradient-to-b from-slate-300 via-slate-400 to-slate-500 rounded-r-sm shadow-[0_0_4px_rgba(255,255,255,0.25)]"></div>
           
           <!-- Authentic Flush iPhone Titanium Controls: Action Button & Volume Rockers (Left) -->
-          <div class="absolute -left-[2px] top-18 sm:top-24 w-[2px] sm:w-[3px] h-4 sm:h-5 bg-gradient-to-b from-slate-300 via-slate-400 to-slate-500 rounded-l-sm shadow-[0_0_4px_rgba(255,255,255,0.2)]"></div>
-          <div class="absolute -left-[2px] top-26 sm:top-34 w-[2px] sm:w-[3px] h-7 sm:h-10 bg-gradient-to-b from-slate-300 via-slate-400 to-slate-500 rounded-l-sm shadow-[0_0_4px_rgba(255,255,255,0.2)]"></div>
-          <div class="absolute -left-[2px] top-35 sm:top-46 w-[2px] sm:w-[3px] h-7 sm:h-10 bg-gradient-to-b from-slate-300 via-slate-400 to-slate-500 rounded-l-sm shadow-[0_0_4px_rgba(255,255,255,0.2)]"></div>
+          <div class="absolute -left-[2px] top-[4.5rem] sm:top-24 w-[2px] sm:w-[3px] h-4 sm:h-5 bg-gradient-to-b from-slate-300 via-slate-400 to-slate-500 rounded-l-sm shadow-[0_0_4px_rgba(255,255,255,0.2)]"></div>
+          <div class="absolute -left-[2px] top-[6.5rem] sm:top-[8.5rem] w-[2px] sm:w-[3px] h-7 sm:h-10 bg-gradient-to-b from-slate-300 via-slate-400 to-slate-500 rounded-l-sm shadow-[0_0_4px_rgba(255,255,255,0.2)]"></div>
+          <div class="absolute -left-[2px] top-[8.75rem] sm:top-[11.5rem] w-[2px] sm:w-[3px] h-7 sm:h-10 bg-gradient-to-b from-slate-300 via-slate-400 to-slate-500 rounded-l-sm shadow-[0_0_4px_rgba(255,255,255,0.2)]"></div>
 
           <!-- Ground Reflection Shadow -->
           <div class="phone-ground-shadow"></div>
@@ -392,7 +401,7 @@
           Download & Verify StudentOS
         </h2>
         <p class="text-slate-400 mt-4 text-sm sm:text-base">
-          Get the authentic V1.0.0 release APK directly or via GitHub. Verify cryptographic SHA-256 integrity directly in your browser.
+          Get StudentOS from APKPure or download the listed V1.0.0 APK directly. Verify that exact frozen APK's SHA-256 in your browser.
         </p>
       </div>
 
@@ -520,7 +529,7 @@
   <footer class="py-10 border-t border-os-border/30 bg-[#040308] text-xs text-os-muted">
     <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-3">
-        <img src="StudentOS_Logo.png" alt="Logo" class="w-5 h-5 object-contain" onerror="this.src='StudentOS_L';" />
+        <img src="StudentOS_Logo.png" alt="Logo" class="w-5 h-5 object-contain" onerror="this.onerror=null; this.style.display='none';" />
         <span class="text-white font-medium">StudentOS V1.0.0</span>
         <span class="text-slate-600">|</span>
         <span>Originated as a Little Kites Individual Submission</span>
@@ -567,6 +576,9 @@
       lucide.createIcons();
 
       try {
+        if (!globalThis.crypto || !crypto.subtle || typeof crypto.subtle.digest !== 'function') {
+          throw new Error('WebCrypto SHA-256 is unavailable in this browser context. Open the HTTPS website in a modern browser.');
+        }
         const arrayBuffer = await file.arrayBuffer();
         const hashBuffer = await crypto.subtle.digest('SHA-256', arrayBuffer);
         const hashArray = Array.from(new Uint8Array(hashBuffer));
@@ -579,7 +591,7 @@
           resStatusBadge.innerHTML = '<i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i><span>VERIFIED AUTHENTIC RELEASE (100% Match with Official Build)</span>';
         } else {
           resStatusBadge.className = "mt-3 py-2.5 px-3 rounded-xl bg-red-950/60 text-red-300 font-bold flex items-center gap-2 border border-red-500/50";
-          resStatusBadge.innerHTML = '<i data-lucide="alert-octagon" class="w-4 h-4 text-red-400"></i><span>HASH MISMATCH — Modified or unofficial package</span>';
+          resStatusBadge.innerHTML = '<i data-lucide="alert-octagon" class="w-4 h-4 text-red-400"></i><span>HASH MISMATCH — This file does not match the published V1.0.0 checksum</span>';
         }
       } catch (err) {
         resComputedHash.textContent = "Error: " + err.message;
