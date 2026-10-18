@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://comstudentos.vercel.app/sitemap.xml
-Sitemap: https://glitchlordx.github.io/StudentOS/sitemap.xml
+Sitemap: https://glitchlordx.github.io/StudentOS/sitemap-github.xml
